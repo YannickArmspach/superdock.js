@@ -1,0 +1,24 @@
+{
+  "name": "superdock",
+  "type": "module",
+  "version": "1.0.1",
+  "main": "src/superdock.js",
+  "license": "MIT",
+  "bin": {
+    "superdock": "src/superdock.js",
+    "sd": "src/superdock.js"
+  },
+  "scripts": {
+    "dev": "npm i -g -f . && chokidar src -c 'npm i -g -f .'",
+    "build": "npm i -g -f ."
+  },
+  "devDependencies": {
+    "chalk": "^5.0.1",
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0",
+    "commander": "^8.1.0",
+    "execa": "^6.1.0",
+    "shelljs": "^0.8.5",
+    "yaml": "^2.1.1"
+  }
+}
