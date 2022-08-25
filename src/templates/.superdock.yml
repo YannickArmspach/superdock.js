@@ -1,0 +1,57 @@
+superdock:
+  
+  version: 2.0.0
+  
+  id: my_project
+  name: MyProject
+  desc: My Project Starter
+  
+  owner: Superdock
+  
+  team:
+    - name: Yannick
+      role: Lead Developper
+      email: yannick@superdock.dev
+    - name: Brayan
+      role: Developer Backend
+      email: brayan@superdock.dev
+    - name: Hugo
+      role: Developer Frontend
+      email: hugo@superdock.dev
+    - name: Jordan
+      role: Project Manager
+      email: jordan@superdock.dev
+  
+  links:
+    - Tickets: https://ppr.superdock.dev
+    - Documentation: https://docs.superdock.dev
+    - Specifications: https://spec.superdock.dev
+    - Design: https://spec.superdock.dev
+  
+  services:
+    nginx: 1.23.1
+    node: 16.17.0
+    mysql: 8.0.30
+    adminer: latest
+    redis: 7.0.4
+    commander: latest
+    mailhog: latest
+    
+  environements:
+  
+    local:
+      domain: superdock.dev
+      vhost: /public
+      uploads: /public/uploads
+      ssh_user: root
+      ssh_ip: root
+      ssh_port: 22
+      db_name: superdock
+      db_user: admin
+      db_pass: admin
+      db_host: superdock_database
+      git_branch: origin/develop
+
+    staging:
+
+    production:

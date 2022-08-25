@@ -1,1 +1,1 @@
-# superdock.js
+# superdock

@@ -1,0 +1,88 @@
+version: "3.9"
+
+services:
+
+  nginx:
+    image: nginx:${SUPERDOCK_NGINX_VERSION}
+    container_name: superdock_nginx
+    stdin_open: true
+    tty: true
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - adminer
+      - mailhog
+      - rediscommander
+    depends_on:
+      - adminer
+      - mailhog
+      - rediscommander
+    volumes:
+      - ${SUPERDOCK_PATH_PROJECT}/superdock/certificates:/etc/nginx/ssl:ro
+      - ${SUPERDOCK_PATH_SERVICES}/nginx/templates:/etc/nginx/templates
+    environment:
+      - NGINX_HOST_1=${SUPERDOCK_LOCAL_DOMAIN}
+      - NGINX_PORT_1=3000
+      - NGINX_HOST_2=api.${SUPERDOCK_LOCAL_DOMAIN}
+      - NGINX_PORT_2=3333
+      - NGINX_HOST_3=${SUPERDOCK_LOCAL_DOMAIN}
+      - NGINX_PORT_3=3000
+      - NGINX_HOST_4=${SUPERDOCK_LOCAL_DOMAIN}
+      - NGINX_PORT_4=3000
+      - NGINX_HOST_5=${SUPERDOCK_LOCAL_DOMAIN}
+      - NGINX_PORT_5=3000
+
+  database:
+    image: mysql:${SUPERDOCK_MYSQL_VERSION}
+    container_name: superdock_database
+    stdin_open: true
+    tty: true
+    ports:
+      - 3306:3306
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - ${SUPERDOCK_PATH_PROJECT}/superdock/docker/mysql:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --max_allowed_packet=32505856
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${SUPERDOCK_LOCAL_DB_NAME}
+      MYSQL_USER: ${SUPERDOCK_LOCAL_DB_USER}
+      MYSQL_PASSWORD: ${SUPERDOCK_LOCAL_DB_PASS}
+
+  adminer:
+    image: adminer:${SUPERDOCK_ADMINER_VERSION}
+    container_name: superdock_adminer
+    stdin_open: true
+    tty: true
+    ports:
+      - 8080:8080
+
+  mailhog:
+    image: mailhog/mailhog:${SUPERDOCK_MAILHOG_VERSION}
+    container_name: superdock_mailhog
+    stdin_open: true
+    tty: true
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+  redis:
+    image: redis:${SUPERDOCK_REDIS_VERSION}
+    container_name: superdock_redis
+    stdin_open: true
+    tty: true
+    ports:
+      - 6379:6379
+
+  rediscommander:
+    image: rediscommander/redis-commander:${SUPERDOCK_COMMANDER_VERSION}
+    container_name: superdock_rediscommander
+    hostname: rediscommander
+    stdin_open: true
+    tty: true
+    ports:
+      - 8081:8081
+    environment:
+      - REDIS_HOSTS=local:redis:6379
