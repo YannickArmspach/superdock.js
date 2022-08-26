@@ -1,8 +1,9 @@
-import shell from 'shelljs'
 import { execa } from 'execa'
-
 import globals from './globals.js'
 import { echoError, echoSpacer, echoSuccess } from './echo.js'
+
+import shelljs from 'shelljs'
+const { exit } = shelljs
 
 /**
  * exec
@@ -42,7 +43,7 @@ export const exec = async (command = '', options = [], input = '') => {
 
     echoSpacer()
     echoError('Runtime error while superdock execute commands')
-    shell.exit()
+    exit()
   
   }
 

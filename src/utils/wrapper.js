@@ -3,7 +3,9 @@ import globals from './globals.js'
 import fs from 'fs'
 import path from 'path'
 import yaml from 'yaml'
-import shell from 'shelljs'
+
+import shelljs from 'shelljs'
+const { exit } = shelljs
 
 import { echo, echoError, echoInfo, echoSpacer } from './echo.js'
 import check from '../utils/check.js'
@@ -61,6 +63,6 @@ export const start = async (checking = true) => {
  */
 export const end = async () => {
 
-  shell.exit()
+  exit()
 
 }

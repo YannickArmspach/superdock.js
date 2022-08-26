@@ -3,7 +3,8 @@ import { start, end } from '../utils/wrapper.js'
 import { echoSuccess } from '../utils/echo.js'
 import { exec } from '../utils/exec.js'
 
-import shell from 'shelljs'
+import shelljs from 'shelljs'
+const { mkdir, chmod } = shelljs;
 
 export default async (options) => {
 
@@ -26,9 +27,9 @@ export default async (options) => {
     const domain = domains[i]
     const dir = globals.conf.dirname + '/certificates/' + domain
 
-    await shell.mkdir('-p', [ dir ])
+    await mkdir('-p', [ dir ])
     
-    shell.chmod('u+x', globals.path.scripts + '/cert.sh')
+    chmod('u+x', globals.path.scripts + '/cert.sh')
 
     await exec( globals.path.scripts + '/cert.sh' , [domain, dir] )
 

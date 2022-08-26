@@ -10,8 +10,9 @@ import ssh from "./commands/ssh.js"
 import logs from "./commands/logs.js"
 import cert from "./commands/cert.js"
 
-cli.name("superdock")
-cli.description("Superdock CLI")
+cli
+  .name("superdock")
+  .description("Superdock CLI")
 
 cli
   .command("init")

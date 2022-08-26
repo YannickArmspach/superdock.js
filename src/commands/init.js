@@ -1,10 +1,11 @@
 import { existsSync } from 'fs'
-import shell from 'shelljs'
 import { exec } from '../utils/exec.js'
 import globals from '../utils/globals.js'
 import { start, end } from '../utils/wrapper.js'
 import { echoWarning, echoSuccess } from '../utils/echo.js'
-import { exit } from 'process'
+
+import shelljs from 'shelljs'
+const { mkdir } = shelljs;
 
 export default async (options) => {
 
@@ -31,7 +32,7 @@ export default async (options) => {
   
   } else {
 
-    shell.mkdir('-p', [
+    mkdir('-p', [
       globals.conf.dirname + '/certificates', 
       globals.conf.dirname + '/databases/local', 
       globals.conf.dirname + '/databases/staging', 

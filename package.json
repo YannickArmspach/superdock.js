@@ -2,8 +2,25 @@
   "name": "superdock",
   "type": "module",
   "version": "1.0.2",
+  "license": "GPL-3.0-only",
+  "homepage": "https://github.com/YannickArmspach/superdock.js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YannickArmspach/superdock.js.git"
+  },
+  "author": {
+    "name": "Yannick Armspach",
+    "email": "superdock@ynk.one",
+    "url": "https://ynk.one"
+  },
+  "maintainers": [
+    {
+    "name": "Yannick Armspach",
+    "email": "superdock@ynk.one",
+    "url": "https://ynk.one"
+    }
+  ],
   "main": "src/superdock.js",
-  "license": "MIT",
   "bin": {
     "superdock": "src/superdock.js",
     "sd": "src/superdock.js"
@@ -13,11 +30,14 @@
   },
   "dependencies": {
     "chalk": "^5.0.1",
-    "chokidar": "^3.5.3",
-    "chokidar-cli": "^3.0.0",
     "commander": "^8.1.0",
     "execa": "^6.1.0",
     "shelljs": "^0.8.5",
-    "yaml": "^2.1.1"
+    "yaml": "^2.1.1",
+    "ora": "^6.1.2"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "chokidar-cli": "^3.0.0"
   }
 }

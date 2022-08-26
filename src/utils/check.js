@@ -1,12 +1,11 @@
 import { existsSync } from 'fs'
-import shelljs from 'shelljs'
-
 import { echoError } from './echo.js'
 import globals from './globals.js'
 
-export default async () => {
+import shelljs from 'shelljs'
+const { which, exit } = shelljs
 
-  const { which, exit } = shelljs
+export default async () => {
 
   if ( ! existsSync(globals.conf.filename) ) {
     echoError('superdock config not founded in this directory')
