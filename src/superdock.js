@@ -8,7 +8,7 @@ import down from "./commands/down.js"
 import kill from "./commands/kill.js"
 import ssh from "./commands/ssh.js"
 import logs from "./commands/logs.js"
-import cert from "./commands/cert.js"
+import info from "./commands/info.js"
 
 cli
   .name("superdock")
@@ -18,6 +18,11 @@ cli
   .command("init")
   .description("Init superdock")
   .action(init)
+
+cli
+  .command("info")
+  .description("Project infos")
+  .action(info)
 
 cli
   .command("up")
@@ -44,11 +49,6 @@ cli
   .command("logs")
   .description("Stream local logs")
   .action(logs)
-
-cli
-  .command("cert")
-  .description("Generate ssl self signed certificate")
-  .action(cert)
 
 // cli
 //   .command("scriptName")

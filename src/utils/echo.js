@@ -39,6 +39,18 @@ export const echoInfo = (message = '') => {
 }
 
 /**
+ * echoLink
+ * 
+ * @params message: string to display
+ * @returns none
+ */
+ export const echoLink = (message = '') => {
+
+  console.log('🔗 '  + globals.color.success(message) )
+
+}
+
+/**
  * echoSuccess
  * 
  * @params message: string to display

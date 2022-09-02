@@ -31,4 +31,5 @@ export default async () => {
     echoError('Error, superdock directory not founded, please use "sd init" fix it')  
     exit()
   }
+
 }

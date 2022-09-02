@@ -23,10 +23,10 @@ superdock:
       email: jordan@superdock.dev
   
   links:
-    - Tickets: https://ppr.superdock.dev
-    - Documentation: https://docs.superdock.dev
-    - Specifications: https://spec.superdock.dev
-    - Design: https://spec.superdock.dev
+    - Tickets: https://ppr.superdock.com
+    - Documentation: https://docs.superdock.com
+    - Specifications: https://spec.superdock.com
+    - Design: https://spec.superdock.com
   
   services:
     nginx: 1.23.1
@@ -37,21 +37,37 @@ superdock:
     commander: latest
     mailhog: latest
     
-  environements:
-  
-    local:
-      domain: superdock.dev
-      vhost: /public
-      uploads: /public/uploads
-      ssh_user: root
-      ssh_ip: root
-      ssh_port: 22
-      db_name: superdock
-      db_user: admin
-      db_pass: admin
-      db_host: superdock_database
-      git_branch: origin/develop
+  projects:
 
-    staging:
+    frontend:
+      local:
+        domain: superdock.dev
+        port: 3000
+      staging:
+        domain: staging.superdock.com
+        port: 3000
+      production:
+        domain: superdock.com
+        port: 3000
 
-    production:
+    backend:
+      local:
+        domain: admin.superdock.dev
+        port: 3001
+      staging:
+        domain: admin.staging.superdock.com
+        port: 3001
+      production:
+        domain: admin.superdock.com
+        port: 3001
+
+    api:
+      local:
+        domain: api.superdock.dev
+        port: 3002
+      staging:
+        domain: api.staging.superdock.com
+        port: 3002
+      production:
+        domain: api.superdock.com
+        port: 3002

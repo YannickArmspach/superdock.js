@@ -1,4 +1,4 @@
-import { execa } from 'execa'
+import { execa, execaCommand } from 'execa'
 import globals from './globals.js'
 import { echoError, echoSpacer, echoSuccess } from './echo.js'
 
@@ -43,8 +43,35 @@ export const exec = async (command = '', options = [], input = '') => {
 
     echoSpacer()
     echoError('Runtime error while superdock execute commands')
-    exit()
   
+  }
+
+}
+
+/**
+ * execCommand
+ * 
+ * @params command: command + array options
+ * @returns none
+ */
+ export const execCmd = async (command = '') => {
+
+  try {
+
+    await execCmd(
+        command, 
+        { ...globals.execa.options }
+      ).then( result => {
+        result.stdout ? console.log(result.stdout) : 'ok'
+      })
+
+    echoSpacer()
+
+  } catch(error) {
+
+    echoSpacer()
+    echoError('Runtime error while superdock execute commands')
+    
   }
 
 }

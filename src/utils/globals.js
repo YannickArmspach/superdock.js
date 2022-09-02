@@ -10,7 +10,7 @@ const __dirname = path.dirname( __filename )
 const globals = {
   superdock: [],
   services: [],
-  env: [],
+  projects: [],
   path:{
     project: __directory,
     superdock: path.resolve(__dirname,'../../'),

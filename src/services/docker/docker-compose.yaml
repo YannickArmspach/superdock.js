@@ -20,18 +20,20 @@ services:
       - rediscommander
     volumes:
       - ${SUPERDOCK_PATH_PROJECT}/superdock/certificates:/etc/nginx/ssl:ro
+      - ${SUPERDOCK_PATH_SERVICES}/certificates:/etc/nginx/ssl_tools:ro
       - ${SUPERDOCK_PATH_SERVICES}/nginx/templates:/etc/nginx/templates
+      - ${SUPERDOCK_PATH_SERVICES}/nginx/entrypoint:/docker-entrypoint.d
     environment:
-      - NGINX_HOST_1=${SUPERDOCK_LOCAL_DOMAIN}
-      - NGINX_PORT_1=3000
-      - NGINX_HOST_2=api.${SUPERDOCK_LOCAL_DOMAIN}
-      - NGINX_PORT_2=3333
-      - NGINX_HOST_3=${SUPERDOCK_LOCAL_DOMAIN}
-      - NGINX_PORT_3=3000
-      - NGINX_HOST_4=${SUPERDOCK_LOCAL_DOMAIN}
-      - NGINX_PORT_4=3000
-      - NGINX_HOST_5=${SUPERDOCK_LOCAL_DOMAIN}
-      - NGINX_PORT_5=3000
+      - NGINX_HOST_1=${SUPERDOCK_DOMAIN_1}
+      - NGINX_PORT_1=${SUPERDOCK_PORT_1}
+      - NGINX_HOST_2=${SUPERDOCK_DOMAIN_2}
+      - NGINX_PORT_2=${SUPERDOCK_PORT_2}
+      - NGINX_HOST_3=${SUPERDOCK_DOMAIN_3}
+      - NGINX_PORT_3=${SUPERDOCK_PORT_3}
+      - NGINX_HOST_4=${SUPERDOCK_DOMAIN_4}
+      - NGINX_PORT_4=${SUPERDOCK_PORT_4}
+      - NGINX_HOST_5=${SUPERDOCK_DOMAIN_5}
+      - NGINX_PORT_5=${SUPERDOCK_PORT_5}
 
   database:
     image: mysql:${SUPERDOCK_MYSQL_VERSION}
@@ -44,12 +46,10 @@ services:
       - SYS_NICE
     volumes:
       - ${SUPERDOCK_PATH_PROJECT}/superdock/docker/mysql:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password --max_allowed_packet=32505856
+      - ${SUPERDOCK_PATH_SERVICES}/mysql/init:/docker-entrypoint-initdb.d
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password --max_allowed_packet=32505856
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ${SUPERDOCK_LOCAL_DB_NAME}
-      MYSQL_USER: ${SUPERDOCK_LOCAL_DB_USER}
-      MYSQL_PASSWORD: ${SUPERDOCK_LOCAL_DB_PASS}
 
   adminer:
     image: adminer:${SUPERDOCK_ADMINER_VERSION}

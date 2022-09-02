@@ -1,7 +1,7 @@
 import { existsSync } from 'fs'
 import { exec } from '../utils/exec.js'
 import globals from '../utils/globals.js'
-import { start, end } from '../utils/wrapper.js'
+import { start } from '../utils/payload.js'
 import { echoWarning, echoSuccess } from '../utils/echo.js'
 
 import shelljs from 'shelljs'
@@ -44,9 +44,5 @@ export default async (options) => {
     echoSuccess('/superdock directory generated')
 
   }
-
-  //create certificates if not exist
-
-  end()
 
 }
