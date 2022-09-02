@@ -25,35 +25,35 @@ auto_envsubst() {
     # create a subdirectory where the template file exists
     mkdir -p "$output_dir/$subdir"
     
-    if [ $template == "/etc/nginx/templates/host1.conf.template" ]; then
+    if [ $template == "/etc/nginx/templates/host.1.conf.template" ]; then
       if [ -f "/etc/nginx/ssl/$NGINX_HOST_1/cert.crt" ]; then
         echo >&3 "$ME: Running envsubst on $template to $output_path"
         envsubst "$defined_envs" < "$template" > "$output_path"
       fi
     fi
 
-    if [ $template == "/etc/nginx/templates/host2.conf.template" ]; then
+    if [ $template == "/etc/nginx/templates/host.2.conf.template" ]; then
       if [ -f "/etc/nginx/ssl/$NGINX_HOST_2/cert.crt" ]; then
         echo >&3 "$ME: Running envsubst on $template to $output_path"
         envsubst "$defined_envs" < "$template" > "$output_path"
       fi
     fi
 
-    if [ $template == "/etc/nginx/templates/host3.conf.template" ]; then
+    if [ $template == "/etc/nginx/templates/host.3.conf.template" ]; then
       if [ -f "/etc/nginx/ssl/$NGINX_HOST_3/cert.crt" ]; then
         echo >&3 "$ME: Running envsubst on $template to $output_path"
         envsubst "$defined_envs" < "$template" > "$output_path"
       fi
     fi
 
-    if [ $template == "/etc/nginx/templates/host4.conf.template" ]; then
+    if [ $template == "/etc/nginx/templates/host.4.conf.template" ]; then
       if [ -f "/etc/nginx/ssl/$NGINX_HOST_4/cert.crt" ]; then
         echo >&3 "$ME: Running envsubst on $template to $output_path"
         envsubst "$defined_envs" < "$template" > "$output_path"
       fi
     fi
 
-    if [ $template == "/etc/nginx/templates/host5.conf.template" ]; then
+    if [ $template == "/etc/nginx/templates/host.5.conf.template" ]; then
       if [ -f "/etc/nginx/ssl/$NGINX_HOST_5/cert.crt" ]; then
         echo >&3 "$ME: Running envsubst on $template to $output_path"
         envsubst "$defined_envs" < "$template" > "$output_path"
