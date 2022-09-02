@@ -26,23 +26,4 @@ export default async (options) => {
   
   }
 
-  if ( existsSync(globals.conf.dirname) ) {
-
-    echoWarning('You cannot create the superdock directory, it already exists') 
-  
-  } else {
-
-    mkdir('-p', [
-      globals.conf.dirname + '/certificates', 
-      globals.conf.dirname + '/databases/local', 
-      globals.conf.dirname + '/databases/staging', 
-      globals.conf.dirname + '/databases/production',
-      globals.conf.dirname + '/docker',
-      globals.conf.dirname + '/scripts'
-    ])
-    
-    echoSuccess('/superdock directory generated')
-
-  }
-
 }
