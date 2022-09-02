@@ -5,7 +5,7 @@ import path from 'path'
 import yaml from 'yaml'
 
 import shelljs from 'shelljs'
-const { chmod } = shelljs
+const { chmod, mkdir, cp } = shelljs
 
 import { echo, echoError, echoInfo, echoLink, echoSpacer } from './echo.js'
 import check from '../utils/check.js'
@@ -66,6 +66,16 @@ export const start = async (checking = true) => {
     chmod('u+x', globals.path.scripts + '/hosts.sh')
     chmod('u+x', globals.path.scripts + '/cert.sh')
     chmod('u+x', globals.path.services + '/nginx/entrypoint/docker-entrypoint.sh')
+
+    mkdir('-p', [
+      globals.conf.dirname + '/certificates', 
+      globals.conf.dirname + '/databases',
+      globals.conf.dirname + '/docker',
+      globals.conf.dirname + '/files',
+      globals.conf.dirname + '/logs'
+    ])
+
+    cp( '-u', globals.path.templates + '/superdock/.gitignore', globals.conf.dirname );
 
     await hosts()
 
