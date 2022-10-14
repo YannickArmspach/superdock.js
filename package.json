@@ -1,7 +1,7 @@
 {
   "name": "superdock",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "GPL-3.0-only",
   "homepage": "https://github.com/YannickArmspach/superdock.js#readme",
   "repository": {
@@ -32,10 +32,10 @@
     "chalk": "^5.0.1",
     "commander": "^8.1.0",
     "execa": "^6.1.0",
+    "inquirer": "^9.1.1",
     "ora": "^6.1.2",
     "shelljs": "^0.8.5",
-    "yaml": "^2.1.1",
-    "inquirer": "^9.1.1"
+    "yaml": "^2.1.1"
   },
   "devDependencies": {
     "chokidar": "^3.5.3",
