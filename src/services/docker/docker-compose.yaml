@@ -50,6 +50,43 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password --max_allowed_packet=32505856
     environment:
       MYSQL_ROOT_PASSWORD: root
+      # MYSQL_USER: dev
+      # MYSQL_PASSWORD: dev
+      # MYSQL_DATABASE: dev
+
+  search:
+    image: getmeili/meilisearch:v0.28
+    container_name: superdock_search
+    stdin_open: true
+    tty: true
+    ports:
+      - 7700:7700
+    environment:
+      MEILI_MASTER_KEY: MASTER_KEY
+
+  socket:
+    image: quay.io/soketi/soketi:1.0-16-debian
+    container_name: superdock_socket
+    stdin_open: true
+    tty: true
+    ports:
+      - 6001:6001
+      - 9601:9601
+
+  drive:
+    image: minio/minio
+    container_name: superdock_drive
+    stdin_open: true
+    tty: true
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - ${SUPERDOCK_PATH_PROJECT}/superdock/docker/drive:/data
+    command: server --console-address ":9001" /data
+    environment:
+      MINIO_ROOT_USER: username
+      MINIO_ROOT_PASSWORD: password
 
   adminer:
     image: adminer:${SUPERDOCK_ADMINER_VERSION}
