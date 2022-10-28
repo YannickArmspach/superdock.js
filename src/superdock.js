@@ -3,6 +3,7 @@
 import cli from "commander"
 
 import init from "./commands/init.js"
+import db from "./commands/db.js"
 import up from "./commands/up.js"
 import down from "./commands/down.js"
 import kill from "./commands/kill.js"
@@ -49,6 +50,13 @@ cli
   .command("logs")
   .description("Stream local logs")
   .action(logs)
+
+cli
+  .command("db")
+  .argument("[action]", "Install or Dump")
+  .argument("[target]", "database name")
+  .description("Install or dump databases")
+  .action(db);
 
 // cli
 //   .command("scriptName")

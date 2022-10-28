@@ -50,18 +50,23 @@ export const start = async (checking = true) => {
 
     process.env['SUPERDOCK_DOMAIN_1'] = globals.projects[0]?.local?.domain || 'project-1.superdock.dev'
     process.env['SUPERDOCK_PORT_1'] = globals.projects[0]?.local?.port || '9991'
+    process.env['SUPERDOCK_PORT_DEV_1'] = globals.projects[0]?.local?.port_dev || '9981'
 
     process.env['SUPERDOCK_DOMAIN_2'] = globals.projects[1]?.local?.domain || 'project-2.superdock.dev'
     process.env['SUPERDOCK_PORT_2'] = globals.projects[1]?.local?.port || '9992'
+    process.env['SUPERDOCK_PORT_DEV_2'] = globals.projects[1]?.local?.port_dev || '9982'
 
     process.env['SUPERDOCK_DOMAIN_3'] = globals.projects[2]?.local?.domain || 'project-3.superdock.dev'
     process.env['SUPERDOCK_PORT_3'] = globals.projects[2]?.local?.port || '9993'
+    process.env['SUPERDOCK_PORT_DEV_3'] = globals.projects[2]?.local?.port_dev || '9983'
 
     process.env['SUPERDOCK_DOMAIN_4'] = globals.projects[3]?.local?.domain || 'project-4.superdock.dev'
     process.env['SUPERDOCK_PORT_4'] = globals.projects[3]?.local?.port || '9994'
+    process.env['SUPERDOCK_PORT_DEV_4'] = globals.projects[3]?.local?.port_dev || '9984'
 
     process.env['SUPERDOCK_DOMAIN_5'] = globals.projects[4]?.local?.domain || 'project-5.superdock.dev'
     process.env['SUPERDOCK_PORT_5'] = globals.projects[4]?.local?.port || '9995'
+    process.env['SUPERDOCK_PORT_DEV_5'] = globals.projects[4]?.local?.port_dev || '9985'
 
     chmod('u+x', globals.path.scripts + '/hosts.sh')
     chmod('u+x', globals.path.scripts + '/cert.sh')

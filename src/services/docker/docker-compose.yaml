@@ -26,14 +26,19 @@ services:
     environment:
       - NGINX_HOST_1=${SUPERDOCK_DOMAIN_1}
       - NGINX_PORT_1=${SUPERDOCK_PORT_1}
+      - NGINX_PORT_DEV_1=${SUPERDOCK_PORT_DEV_1}
       - NGINX_HOST_2=${SUPERDOCK_DOMAIN_2}
       - NGINX_PORT_2=${SUPERDOCK_PORT_2}
+      - NGINX_PORT_DEV_2=${SUPERDOCK_PORT_DEV_2}
       - NGINX_HOST_3=${SUPERDOCK_DOMAIN_3}
       - NGINX_PORT_3=${SUPERDOCK_PORT_3}
+      - NGINX_PORT_DEV_3=${SUPERDOCK_PORT_DEV_3}
       - NGINX_HOST_4=${SUPERDOCK_DOMAIN_4}
       - NGINX_PORT_4=${SUPERDOCK_PORT_4}
+      - NGINX_PORT_DEV_4=${SUPERDOCK_PORT_DEV_4}
       - NGINX_HOST_5=${SUPERDOCK_DOMAIN_5}
       - NGINX_PORT_5=${SUPERDOCK_PORT_5}
+      - NGINX_PORT_DEV_5=${SUPERDOCK_PORT_DEV_5}
 
   database:
     image: mysql:${SUPERDOCK_MYSQL_VERSION}
@@ -47,6 +52,7 @@ services:
     volumes:
       - ${SUPERDOCK_PATH_PROJECT}/superdock/docker/mysql:/var/lib/mysql
       - ${SUPERDOCK_PATH_SERVICES}/mysql/init:/docker-entrypoint-initdb.d
+      - ${SUPERDOCK_PATH_PROJECT}/superdock/databases:/superdock/databases
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password --max_allowed_packet=32505856
     environment:
       MYSQL_ROOT_PASSWORD: root
